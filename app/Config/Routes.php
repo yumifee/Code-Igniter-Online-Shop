@@ -30,6 +30,15 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'LandingController::index');
+$routes->get('/detail', 'c_detail_product::index');
+$routes->get('/cart', 'c_cart::index');
+$routes->get('/addto/(:segment)', 'c_cart::addto/$1');
+$routes->post('cart/update_qty/(:segment)', 'c_cart::update_qty/$1');
+$routes->get('/delete/(:segment)', 'c_cart::destroyCart/$1');
+$routes->get('/proses_hapus_semua_cart', 'c_cart::deleteCart');
+$routes->post('/checkout', 'C_Trans::checkout');
+
+
 
 /*
  * --------------------------------------------------------------------

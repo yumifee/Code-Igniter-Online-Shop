@@ -2,17 +2,18 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use App\Models\Product;
+use App\Models\m_product;
+use Config\View;
+// use App\Models\MBarang;
+use App\Models\m_cart;
 
 class LandingController extends BaseController
 {
     public function index()
     {
-        $Model = new Product();
+        $model = new m_product();
+        $data['products'] = $model->getAll();
 
-        $Data['Product'] = $Model->getProduct();
-
-        echo view('landing', $Data);
+        return view("v_product.php", $data);
     }
 }
